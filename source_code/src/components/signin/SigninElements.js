@@ -12,13 +12,17 @@ export const SigninContainer = styled.div`
 
 export const SigninWrapper = styled.div`
     background: #fff;
-    min-height: 600px;
+    min-height: 500px;
     width: 500px;
     max-width: 90%;
     margin: auto;
+    margin-top: 100px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 
 `
 
@@ -35,4 +39,21 @@ export const SigninInput = styled.input`
     border: solid gray 1px;
     margin-bottom: 30px;
 
+`
+
+export const Button = styled.button`
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #007bff;
+
+`
+
+export const CloseLink = styled.a`
+    cursor: pointer;
+    position: absolute;
+    transform: translate(0%, -50%);
 `
