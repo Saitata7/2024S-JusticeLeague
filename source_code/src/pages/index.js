@@ -53,8 +53,8 @@ export const Home = () => {
         id="#"
         subtitle="Contact information"
         title=""
-        text="Address: 82 Upper sutton lane Heston Middx TW5 0QB, Heston middx, UK"
-        newtext ="Email: skrj80@gmail.com  |  Phone: +44 7909537987"
+        text="Address: One Pace Plaza, New York, NY 10038"
+        newtext ="Email: email@gmail.com  |  Phone: +1 (866) 722-3338"
         //btnText="Read more"
       />
       <Footer />

@@ -16,7 +16,7 @@ const Footer = () => {
             <FooterH2>About Us</FooterH2>
             <FooterLink href="#">How it works</FooterLink>
             <p style={{ color: 'white' }}>
-              We provide onestop service in fully managing and maintaining your property
+            We specialize in debunking and fact-checking fake news to ensure accurate and reliable information reaches our audience.
               </p>
           </div>
           <div className="col-lg-3 col-sm-6">
@@ -36,7 +36,7 @@ const Footer = () => {
         </div>
         <div className="row">
           <div className="col-12 mt-5 ">
-            <h1 className="logo-text gray-text center-align">- Skrj consulting ltd -</h1>
+            <h1 className="logo-text gray-text center-align">- Pace University Students -</h1>
           </div>
         </div>
       </FooterWrapper>
