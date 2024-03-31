@@ -43,11 +43,11 @@ export const InfoSection_upload = ({ id, title, subtitle, text, image, btnText }
               <Subtitle>{subtitle}</Subtitle>
               <Title className="text-white mb-5">{title}</Title>
               <GrowingTextarea> </GrowingTextarea>
-              <div style={myStyle}>
+              {/* <div style={myStyle}>
               <ButtonBasic to="" primary="true" dark="true" className="mx-auto" >
                 {btnText}
               </ButtonBasic>
-              </div>
+              </div> */}
              
             </div>
             <div className="col-lg-6 col-sm-12 img-wrap">

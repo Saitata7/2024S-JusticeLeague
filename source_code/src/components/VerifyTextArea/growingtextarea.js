@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { ButtonBasic } from "../ButtonElements";
+import axios from 'axios';
 
 const TextareaContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: hidden;
-  background-color:white;
+  background-color: white;
   max-height: 200px; /* Adjust this value to set the maximum height */
 `;
 
@@ -23,6 +25,7 @@ const Textarea = styled.textarea`
 
 const GrowingTextarea = () => {
   const [value, setValue] = useState('');
+  const [response, setResponse] = useState('');
   const textareaRef = useRef(null);
 
   useEffect(() => {
@@ -47,15 +50,34 @@ const GrowingTextarea = () => {
     setValue(e.target.value);
   };
 
+  const sendDataToServer = async (text) => {
+    try {
+      // Make an HTTP POST request to the Flask server
+      const response = await axios.post('/api/update-text', { text });
+      console.log(response.data); // Log the response from the server
+      setResponse(response.data); // Set the response in state
+    } catch (error) {
+      console.error('Error sending data to server:', error);
+    }
+  };
   return (
-    <TextareaContainer>
-      <Textarea
-        value={value}
-        onChange={handleChange}
-        ref={textareaRef}
-        rows={1}
-      />
-    </TextareaContainer>
+    <div>
+      <TextareaContainer>
+        <Textarea
+          value={value}
+          onChange={handleChange}
+          ref={textareaRef}
+          rows={1}
+        />
+      </TextareaContainer>
+      <div>Response from server: {response}</div>
+
+      <div style={{marginTop: '6px'}}>
+              <ButtonBasic to="" primary="true" dark="true" className="mx-auto" onClick={sendDataToServer} >
+                Verify News
+              </ButtonBasic>
+              </div>
+    </div>
   );
 };
 
