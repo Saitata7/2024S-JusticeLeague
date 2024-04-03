@@ -1,0 +1,19 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-align: center;
+    }
+
+#submit {
+    font-size: large;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: green;
+    color: white;
+}
+
+#submit:hover{
+    background-color: rgb(7, 56, 7);
+    cursor: pointer;
+    
+}
