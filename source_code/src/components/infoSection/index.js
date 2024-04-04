@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 import { InfoContainer, InfoWrapper, Subtitle, Title } from "./InfoElements";
 import { ButtonBasic } from "../ButtonElements";
-import GrowingTextarea from "../VerifyTextArea/growingtextarea";
+import GrowingTextarea from "../VerifyTextArea/Growingtextarea";
 
 export const InfoSection = ({ id, title, subtitle, text, image, btnText }) => {
   return (
@@ -42,7 +42,7 @@ export const InfoSection_upload = ({ id, title, subtitle, text, image, btnText }
             <div className="col-lg-6 col-sm-12 my-auto">
               <Subtitle>{subtitle}</Subtitle>
               <Title className="text-white mb-5">{title}</Title>
-              <GrowingTextarea> </GrowingTextarea>
+             <GrowingTextarea />
               {/* <div style={myStyle}>
               <ButtonBasic to="" primary="true" dark="true" className="mx-auto" >
                 {btnText}

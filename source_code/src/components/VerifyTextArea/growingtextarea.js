@@ -36,13 +36,9 @@ const GrowingTextarea = () => {
     if (textareaRef.current) {
       // Reset the height to auto to calculate the correct scrollHeight
       textareaRef.current.style.height = 'auto';
-
       // Set the height to the scrollHeight, capped at the maximum height
       const maxHeight = 200; // Adjust this value to set the maximum height
-      textareaRef.current.style.height = `${Math.min(
-        textareaRef.current.scrollHeight,
-        maxHeight
-      )}px`;
+      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, maxHeight)}px`;
     }
   };
 
@@ -50,33 +46,31 @@ const GrowingTextarea = () => {
     setValue(e.target.value);
   };
 
-  const sendDataToServer = async (text) => {
+  const sendDataToServer = async () => {
     try {
-      // Make an HTTP POST request to the Flask server
-      const response = await axios.post('/api/update-text', { text });
-      console.log(response.data); // Log the response from the server
-      setResponse(response.data); // Set the response in state
+      const response = await axios.post('http://127.0.0.1:5000/process', { data: value });
+      setResponse(response.data);
     } catch (error) {
       console.error('Error sending data to server:', error);
+      setResponse('Error sending data to server');
     }
   };
+
   return (
     <div>
       <TextareaContainer>
-        <Textarea
-          value={value}
-          onChange={handleChange}
-          ref={textareaRef}
-          rows={1}
-        />
+        <Textarea value={value} onChange={handleChange} ref={textareaRef} rows={1} />
       </TextareaContainer>
-      <div>Response from server: {response}</div>
-
-      <div style={{marginTop: '6px'}}>
-              <ButtonBasic to="" primary="true" dark="true" className="mx-auto" onClick={sendDataToServer} >
-                Verify News
-              </ButtonBasic>
-              </div>
+      <div style={{ marginTop: '6px' }}>
+        <ButtonBasic to="" primary="true" dark="true" className="mx-auto" onClick={sendDataToServer}>
+          Verify News
+        </ButtonBasic>
+      </div>
+      {response && (
+        <div style={{ marginTop: '16px', fontWeight: 'bold',color:'white' }}>
+          Response from server: {response}
+        </div>
+      )}
     </div>
   );
 };

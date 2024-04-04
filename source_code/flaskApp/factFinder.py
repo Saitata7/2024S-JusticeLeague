@@ -10,8 +10,10 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import joblib
 
-fake_news_path = "C:\\Users\\89tom\\OneDrive\\Desktop\\Pace\\Cs691\\FactFinder\\Fake.csv" 
-actual_news_path = "C:\\Users\\89tom\\OneDrive\\Desktop\\Pace\\Cs691\\FactFinder\\True.csv"
+
+fake_news_path = "C:\\Users\\rusha\\Documents\\Restart\\Github_project_capstone\\2024S-JusticeLeague\\source_code\\flaskApp\\Fake.csv" 
+
+actual_news_path = "C:\\Users\\rusha\\Documents\\Restart\\Github_project_capstone\\2024S-JusticeLeague\\source_code\\flaskApp\\True.csv"
 
 df_fake = pd.read_csv(fake_news_path)
 df_actual = pd.read_csv(actual_news_path)

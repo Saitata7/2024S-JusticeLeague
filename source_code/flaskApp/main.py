@@ -6,6 +6,9 @@ import re
 import string
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+from flask import Flask, jsonify
+from flask_cors import CORS
+from flask_cors import cross_origin
 
 
 
@@ -34,11 +37,19 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/api/data', methods=['GET'])
+@cross_origin()
+def get_data():
+    print('hey they api call works')
+    return jsonify({'message': 'Hello from Flask API!'})
+
 @app.route('/process', methods=['POST'])
+@cross_origin()
 def process():
+    print('post called')
     if request.method == 'POST':
-        data = request.json['data']
-        
+        # data = request.json['data']
+        data = request.json.get('data') 
 
         result = prediction(data)
         return result
