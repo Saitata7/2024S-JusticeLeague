@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
+import { auth } from "../../firebase/config"; // Assuming you have imported auth from firebase/config
+import { getAuth } from "firebase/auth"; // Import getAuth function
 import {
   Nav,
   NavbarContainer,
@@ -12,53 +14,72 @@ import {
   NavImg,
 } from "./NavbarElements";
 import "./../../App.css";
-import logo from "../../images/logo.png"
+import logo from "../../images/logo.png";
 
 export const Navbar = ({ toggle }) => {
-  const [scrollNav, setScrollNav] = useState(false);
-  const changeNav = () => {
-    if (window.scrollY >= 80) {
-      setScrollNav(true);
-    } else {
-      setScrollNav(false);
-    }
+  const [loading, setLoading] = useState(true);
+  const auth = getAuth(); // Initialize auth object using getAuth function
+  const handleClick = () => {
+    window.location.reload(); // Refresh the page
   };
 
   useEffect(() => {
-      window.addEventListener('scroll', changeNav);      
-  }, [])
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setLoading(false);
+    });
+  
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      // Navigate to the desired page after successful logout
+      window.location.href = '/'; // Replace '/' with the desired path
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
+  if (loading) {
+    return null; // Render nothing while loading
+  }
 
   return (
-    <>
-      <Nav scrollNav={scrollNav}>
-        <NavbarContainer>
-            <NavImg src={logo} alt=""/>
-          <MobileIcon onClick={toggle}>
-            <FaBars />
-          </MobileIcon>
-          <NavMenu>
+    <Nav>
+      <NavbarContainer>
+        <NavImg src={logo} alt="" />
+        <MobileIcon onClick={toggle}>
+          <FaBars />
+        </MobileIcon>
+        <NavMenu>
           <NavItem>
             <NavLinks to="signin">Home</NavLinks>
-            </NavItem>
-            <NavItem>
+          </NavItem>
+          <NavItem>
             <NavLinks to="services">Verify News</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="discover">Search History</NavLinks>
-            </NavItem>
-            <NavItem>
-              
-              <NavLinks to="about">About us</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="signup">Contact</NavLinks>
-            </NavItem>
-          </NavMenu>
-          <NavBtn>
+          </NavItem>
+          <NavItem>
+            <NavLinks to="discover">Search History</NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavLinks to="about">About us</NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavLinks to="signup">Contact</NavLinks>
+          </NavItem>
+        </NavMenu>
+        <NavBtn>
+          {auth.currentUser ? (
+            <>
+              <NavBtnLink to="/chat">Chat</NavBtnLink>
+              <NavBtnLink onClick={handleLogout}>Logout</NavBtnLink>
+            </>
+          ) : (
             <NavBtnLink to="/signin">Login</NavBtnLink>
-          </NavBtn>
-        </NavbarContainer>
-      </Nav>
-    </>
+          )}
+        </NavBtn>
+      </NavbarContainer>
+    </Nav>
   );
 };
