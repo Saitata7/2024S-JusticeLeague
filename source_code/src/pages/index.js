@@ -10,7 +10,8 @@ import InfoSectionLight from "../components/infoSectionLight";
 import Services from "../components/services";
 import Footer from "../components/footer";
 
-export const Home = () => {
+
+  const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -33,7 +34,7 @@ export const Home = () => {
       <InfoSection_upload
         image={Image1}
         id="about"
-        subtitle="Ensuring Hassle-Free Ownership and Optimal Property Performance"
+        subtitle="Efdsnsuring Hassle-Free Ownership and Optimal Property Performance"
         title="Efficient Property Management and Maintenance Services"
         text="Enter News."
         btnText="Verify News"
@@ -58,6 +59,8 @@ export const Home = () => {
         //btnText="Read more"
       />
       <Footer />
+     
     </>
   );
 };
+export default Home
