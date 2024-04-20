@@ -34,8 +34,8 @@ import Footer from "../components/footer";
       <InfoSection_upload
         image={Image1}
         id="about"
-        subtitle="Efdsnsuring Hassle-Free Ownership and Optimal Property Performance"
-        title="Efficient Property Management and Maintenance Services"
+        subtitle="Ensuring you get continuous updates and improvements."
+        title="Efficient Fake News Detection Service."
         text="Enter News."
         btnText="Verify News"
       /> 
@@ -43,9 +43,9 @@ import Footer from "../components/footer";
       <InfoSectionLight
         image={Image2}
         id="discover"
-        subtitle="Expert Assistance in Buying, Selling, Rental, Renovation, and Maintenance"
-        title="Your One-Stop Solution for Real Estate Needs"
-        text="Welcome to our comprehensive real estate platform! Whether you're looking to buy your dream home, sell your property, find the perfect rental, or renovate and maintain your existing space, we've got you covered. Our team of experienced professionals is dedicated to providing top-notch service and guidance throughout your real estate journey. Experience hassle-free transactions and reliable support with us."
+        subtitle="Hello"
+        title="In Progress"
+        text="Our contributor Info"
         btnText="Explore"
       />
       <Services />
