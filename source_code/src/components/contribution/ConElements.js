@@ -34,14 +34,12 @@ export const ServicesWrapper = styled.div`
 
     @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
-        //padding: 0 20px;
         padding: 20px 50px;
     }
 
 `
 
 export const ServicesCard = styled.div`
-    //background: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
