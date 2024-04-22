@@ -8,6 +8,7 @@ import Image1 from "../images/design-notes.svg";
 import Image2 from "../images/space.svg";
 import InfoSectionLight from "../components/infoSectionLight";
 import Services from "../components/services";
+import Contribution from "../components/contribution";
 import Footer from "../components/footer";
 
 
@@ -49,6 +50,7 @@ import Footer from "../components/footer";
         btnText="Explore"
       />
       <Services />
+      <Contribution />
       <InfoSectionLight
         image={Image1}
         id="#"
