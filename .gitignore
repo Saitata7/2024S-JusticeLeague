@@ -1,3 +1,6 @@
 source_code/node_modules/
 source_code/flaskApp/csv/Fake.csv
 source_code/flaskApp/csv/True.csv
+node_modules
+source_code/src/firebase/config.js
+source_code/src/firebase/config.js
