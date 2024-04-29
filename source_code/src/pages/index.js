@@ -34,7 +34,7 @@ import Footer from "../components/footer";
       /> */}
       <InfoSection_upload
         image={Image1}
-        id="about"
+        id="verifynews"
         subtitle="Ensuring you get continuous updates and improvements."
         title="Efficient Fake News Detection Service."
         text="Enter News."
@@ -53,7 +53,7 @@ import Footer from "../components/footer";
       <Contribution />
       <InfoSectionLight
         image={Image1}
-        id="#"
+        id="contact"
         subtitle="Contact information"
         title=""
         text="Address: One Pace Plaza, New York, NY 10038"
