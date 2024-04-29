@@ -54,10 +54,10 @@ export const Navbar = ({ toggle }) => {
         </MobileIcon>
         <NavMenu>
           <NavItem>
-            <NavLinks to="signin">Home</NavLinks>
+            <NavLinks to="#">Home</NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="services">Verify News</NavLinks>
+            <NavLinks to="verifynews">Verify News</NavLinks>
           </NavItem>
           <NavItem>
             <NavLinks to="discover">Search History</NavLinks>
@@ -66,7 +66,7 @@ export const Navbar = ({ toggle }) => {
             <NavLinks to="about">About us</NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="signup">Contact</NavLinks>
+            <NavLinks to="contact">Contact</NavLinks>
           </NavItem>
         </NavMenu>
         <NavBtn>
