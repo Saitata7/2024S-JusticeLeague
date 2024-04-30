@@ -12,6 +12,7 @@ import {
   NavBtn,
   NavBtnLink,
   NavImg,
+  NavBarLink
 } from "./NavbarElements";
 import "./../../App.css";
 import logo from "../../images/logo.png";
@@ -60,7 +61,7 @@ export const Navbar = ({ toggle }) => {
             <NavLinks to="verifynews">Verify News</NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="discover">Search History</NavLinks>
+          <NavBarLink to="/history">Search History</NavBarLink>
           </NavItem>
           <NavItem>
             <NavLinks to="about">About us</NavLinks>
