@@ -6,6 +6,7 @@ const ChatComponent = ({ user, selectedUser }) => {
   const [newMessage, setNewMessage] = useState('');
 
   useEffect(() => {
+    setMessages([])
     if (user && selectedUser) {
       const db = getDatabase();
       const senderMessagesRef = ref(db, `messages/${user.uid}/${selectedUser.id}`);
