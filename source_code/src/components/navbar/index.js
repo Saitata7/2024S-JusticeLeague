@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import { auth } from "../../firebase/config";
+import { auth } from "../firebase/config";
 import { getAuth } from "firebase/auth";
 import {
   Nav,
