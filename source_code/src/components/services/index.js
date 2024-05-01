@@ -6,7 +6,7 @@ import Icon3 from "../../images/real-time.svg"
 
 const Services = () => {
   return (
-    <ServicesContainer id="services">
+    <ServicesContainer id="about">
       <ServicesH1>Our Purpose</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>

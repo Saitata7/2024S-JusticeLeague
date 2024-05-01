@@ -8,6 +8,7 @@ import Image1 from "../images/design-notes.svg";
 import Image2 from "../images/space.svg";
 import InfoSectionLight from "../components/infoSectionLight";
 import Services from "../components/services";
+import Contribution from "../components/contribution";
 import Footer from "../components/footer";
 
 
@@ -33,7 +34,7 @@ import Footer from "../components/footer";
       /> */}
       <InfoSection_upload
         image={Image1}
-        id="about"
+        id="verifynews"
         subtitle="Ensuring you get continuous updates and improvements."
         title="Efficient Fake News Detection Service."
         text="Enter News."
@@ -43,15 +44,16 @@ import Footer from "../components/footer";
       <InfoSectionLight
         image={Image2}
         id="discover"
-        subtitle="Expert Assistance in Buying, Selling, Rental, Renovation, and Maintenance"
-        title="Your One-Stop Solution for Real Estate Needs"
-        text="Welcome to our comprehensive real estate platform! Whether you're looking to buy your dream home, sell your property, find the perfect rental, or renovate and maintain your existing space, we've got you covered. Our team of experienced professionals is dedicated to providing top-notch service and guidance throughout your real estate journey. Experience hassle-free transactions and reliable support with us."
+        subtitle="Hello"
+        title="In Progress"
+        text="Our contributor Info"
         btnText="Explore"
       />
       <Services />
+      <Contribution />
       <InfoSectionLight
         image={Image1}
-        id="#"
+        id="contact"
         subtitle="Contact information"
         title=""
         text="Address: One Pace Plaza, New York, NY 10038"
