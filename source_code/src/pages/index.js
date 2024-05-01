@@ -34,8 +34,8 @@ import Footer from "../components/footer";
       <InfoSection_upload
         image={Image1}
         id="about"
-        subtitle="Efdsnsuring Hassle-Free Ownership and Optimal Property Performance"
-        title="Efficient Property Management and Maintenance Services"
+        subtitle="Ensuring you get continuous updates and improvements."
+        title="Efficient Fake News Detection Service."
         text="Enter News."
         btnText="Verify News"
       /> 

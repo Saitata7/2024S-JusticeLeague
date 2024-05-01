@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import { auth } from "../../firebase/config"; // Assuming you have imported auth from firebase/config
-import { getAuth } from "firebase/auth"; // Import getAuth function
+import { auth } from "../../firebase/config";
+import { getAuth } from "firebase/auth";
 import {
   Nav,
   NavbarContainer,
@@ -18,31 +18,30 @@ import logo from "../../images/logo.png";
 
 export const Navbar = ({ toggle }) => {
   const [loading, setLoading] = useState(true);
-  const auth = getAuth(); // Initialize auth object using getAuth function
+  const auth = getAuth();
+
   const handleClick = () => {
-    window.location.reload(); // Refresh the page
+    window.location.reload();
   };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setLoading(false);
     });
-  
     return () => unsubscribe();
   }, []);
 
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      // Navigate to the desired page after successful logout
-      window.location.href = '/'; // Replace '/' with the desired path
+      window.location.href = "/";
     } catch (error) {
       console.error("Error signing out:", error);
     }
   };
 
   if (loading) {
-    return null; // Render nothing while loading
+    return null;
   }
 
   return (
@@ -68,6 +67,11 @@ export const Navbar = ({ toggle }) => {
           <NavItem>
             <NavLinks to="signup">Contact</NavLinks>
           </NavItem>
+          {auth.currentUser && (
+            <NavItem>
+              <NavBtnLink to="/post">Post</NavBtnLink>
+            </NavItem>
+          )}
         </NavMenu>
         <NavBtn>
           {auth.currentUser ? (

@@ -68,7 +68,7 @@ const GrowingTextarea = () => {
       </div>
       {response && (
         <div style={{ marginTop: '16px', fontWeight: 'bold',color:'white' }}>
-          Response from server: {response}
+           Result: {response}
         </div>
       )}
     </div>

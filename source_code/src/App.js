@@ -6,7 +6,8 @@ import Home from './pages/index';
 import SigninPage from './pages/signin';
 import { useState } from 'react';
 import ChatPage from './pages/ChatPage';
-
+import PostPage from './pages/PostPage';
+import NewsPostDetailsComponent from './components/NewsPostDetailsComponent/NewsPostDetails'
 function App() {
   
 
@@ -16,6 +17,8 @@ function App() {
   <Route path="/" element={<Home />} />
   <Route path="/signin" element={<SigninPage />} />
   <Route path="/chat" element={<ChatPage />} />
+  <Route path="/post" element={<PostPage />} />
+  <Route path="/post/:postId" element={<NewsPostDetailsComponent />} />
 </Routes>
     </Router>
   );
