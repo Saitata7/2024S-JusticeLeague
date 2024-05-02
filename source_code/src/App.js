@@ -6,7 +6,7 @@ import Home from './pages/index';
 import SigninPage from './pages/signin';
 import ChatPage from './pages/ChatPage';
 import PostPage from './pages/PostPage';
-import NewsPostDetailsComponent from './components/NewsPostDetailsComponent/NewsPostDetails'
+import NewsPostDetailsComponent from './components/newsPost/NewsPostDetails'
 import History from './pages/history';
 
 function App() {
