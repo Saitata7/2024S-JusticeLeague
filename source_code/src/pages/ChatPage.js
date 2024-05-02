@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { ref, onChildAdded } from 'firebase/database';
-import { database } from '../firebase/config';
+import { database } from '../components/firebase/config';
 import UserSearch from '../components/usersearch/UserSearch';
 import { Navbar } from './../components/navbar';
 import { Sidebar } from './../components/sidebar';

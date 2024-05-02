@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Pagination from './pagination';
-import { auth, database } from '../../firebase/config';
+import { auth, database } from '../firebase/config';
 import { HistorySectionContainer,
    HistoryTitle,
    Nav,
