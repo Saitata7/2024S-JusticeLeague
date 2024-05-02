@@ -59,20 +59,22 @@ export const Navbar = ({ toggle }) => {
           <NavItem>
             <NavLinks to="verifynews">Verify News</NavLinks>
           </NavItem>
+          {auth.currentUser && (
           <NavItem>
           <NavBarLink to="/history">Search History</NavBarLink>
           </NavItem>
+          )}
+          {auth.currentUser && (
+            <NavItem>
+              <NavBarLink to="/post">Blog</NavBarLink>
+            </NavItem>
+          )}
           <NavItem>
             <NavLinks to="about">About us</NavLinks>
           </NavItem>
-          <NavItem>
+          {/* <NavItem>
             <NavLinks to="contact">Contact</NavLinks>
-          </NavItem>
-          {auth.currentUser && (
-            <NavItem>
-              <NavBtnLink to="/post">Post</NavBtnLink>
-            </NavItem>
-          )}
+          </NavItem> */}
         </NavMenu>
         <NavBtn>
           {auth.currentUser ? (
