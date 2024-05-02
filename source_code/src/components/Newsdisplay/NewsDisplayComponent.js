@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFirestore, collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import { NewsContainer, NewsTitle, NewsGrid, NewsCard, NewsLink, NewsTitleText, NewsContent, CommentsContainer, CommentsIcon, CommentsText } from './NewsDisplayElements';
 
 const NewsDisplayComponent = () => {
   const [newsPosts, setNewsPosts] = useState([]);
@@ -21,19 +22,25 @@ const NewsDisplayComponent = () => {
   }, []);
 
   return (
-    <div>
-      <h3>News Posts</h3>
-      <div className="news-grid">
+    <NewsContainer>
+      <NewsTitle>News Posts</NewsTitle>
+      <NewsGrid>
         {newsPosts.map((post) => (
-          <div key={post.id} className="news-card">
-            <Link to={`/post/${post.id}`}>
-              <h4>{post.title}</h4>
-              <p>{post.content}</p>
-            </Link>
-          </div>
+          <NewsCard key={post.id}>
+            <NewsLink to={`/post/${post.id}`}>
+              <NewsTitleText>{post.title}</NewsTitleText>
+              <NewsContent>{post.content}</NewsContent>
+            </NewsLink>
+            <CommentsContainer>
+              <CommentsIcon>💬</CommentsIcon>
+              <CommentsText>
+                {post.comments ? post.comments.length : 0} Comments
+              </CommentsText>
+            </CommentsContainer>
+          </NewsCard>
         ))}
-      </div>
-    </div>
+      </NewsGrid>
+    </NewsContainer>
   );
 };
 
