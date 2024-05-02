@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, onChildAdded, push } from 'firebase/database';
+import {
+  ChatContainer,
+  ChatMessages,
+  ChatInputContainer,
+  ChatInput,
+  ChatButton
+} from "./chatElement";
 
 const ChatComponent = ({ user, selectedUser }) => {
   const [messages, setMessages] = useState([]);
@@ -55,25 +62,25 @@ const ChatComponent = ({ user, selectedUser }) => {
   };
 
   return (
-    <div>
+    <ChatContainer>
       <h3>Chat with {selectedUser.email}</h3>
-      <div className="messages">
+      <ChatMessages>
         {messages.map((message, index) => (
           <div key={index}>
             <strong>{message.senderIsUser ? 'You' : selectedUser.email}</strong>: {message.text}
           </div>
         ))}
-      </div>
-      <div className="input-container">
-        <input
+       </ChatMessages>
+      <ChatInputContainer>
+        <ChatInput
           type="text"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           placeholder="Type a message..."
         />
-        <button onClick={handleSendMessage}>Send</button>
-      </div>
-    </div>
+        <ChatButton onClick={handleSendMessage}>Send</ChatButton>
+      </ChatInputContainer>
+    </ChatContainer>
   );
 };
 
