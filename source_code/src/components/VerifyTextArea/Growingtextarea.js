@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { ButtonBasic } from "../ButtonElements";
 import axios from 'axios';
-
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { auth } from "../../firebase/config";
 const TextareaContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -49,12 +50,24 @@ const GrowingTextarea = () => {
   const sendDataToServer = async () => {
     try {
       const response = await axios.post('http://127.0.0.1:5000/process', { data: value });
-      setResponse(response.data);
+      setResponse(response.data); 
+      const db = getFirestore();
+      const historyCollection = collection(db, 'history');
+
+      await addDoc(historyCollection, {
+        userId: auth.currentUser.uid,
+        username: auth.currentUser.email,
+        date: new Date().toISOString().slice(0, 10), // Format the date as 'YYYY-MM-DD'
+        content: value,
+        isTrue: response.data === 'This is an Actual News', // Adjust this based on the actual response format
+      });
+      console.log('History data stored successfully');
     } catch (error) {
       console.error('Error sending data to server:', error);
       setResponse('Error sending data to server');
     }
   };
+ 
 
   return (
     <div>

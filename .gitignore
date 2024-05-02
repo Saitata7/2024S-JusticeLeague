@@ -4,3 +4,5 @@ source_code/flaskApp/csv/True.csv
 node_modules
 source_code/src/firebase/config.js
 source_code/src/firebase/config.js
+env/
+package-lock.json

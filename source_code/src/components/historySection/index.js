@@ -9,11 +9,13 @@ import { HistorySectionContainer,
    NavImg,
    } from './historyElements';
 import logo from "../../images/logo.png";
+import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+
 
 
 const HistorySection = () => {
   const [historyData, setHistoryData] = useState([]);
-  const [ setLoading] = useState(true);
+  const [ loading,setLoading] = useState(true);
   const itemsPerPage = 3;  //Per page 
 
   const historyData2 = [
@@ -42,7 +44,29 @@ const HistorySection = () => {
 
   //   fetchData();
   // }, []);
+  //const [historyData, setHistoryData] = useState([]);
+  //const [loading, setLoading] = useState(true);
+  //const itemsPerPage = 3; // Per page
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const db = getFirestore();
+        const historyCollection = collection(db, 'history');
+        const q = query(historyCollection, where('userId', '==', auth.currentUser.uid));
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        setHistoryData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching history data:', error);
+        setLoading(false);
+      }finally{
+        setLoading(false)
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -57,7 +81,13 @@ const HistorySection = () => {
       </Nav>
       <HistorySectionContainer>
         <HistoryTitle>Search History Page</HistoryTitle>
-          <Pagination data={historyData2} itemsPerPage={itemsPerPage} />
+        {loading ? (
+          <p>Loading...</p>
+        ) : historyData.length === 0 ? (
+          <p>No history data available.</p>
+        ) : (
+          <Pagination data={historyData} itemsPerPage={itemsPerPage} />
+        )}
       </HistorySectionContainer>
     </>
   );

@@ -5,13 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/index';
 import SigninPage from './pages/signin';
 import ChatPage from './pages/ChatPage';
-<<<<<<< HEAD
 import PostPage from './pages/PostPage';
 import NewsPostDetailsComponent from './components/NewsPostDetailsComponent/NewsPostDetails'
-=======
 import History from './pages/history';
 
->>>>>>> 17eb8f49301ce47eb4f218aa6495d2d767d4bfc1
 function App() {
   
 
