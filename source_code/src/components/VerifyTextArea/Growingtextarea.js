@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ButtonBasic } from "../ButtonElements";
 import axios from 'axios';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { auth } from "../../firebase/config";
+import { auth } from "../firebase/config";
 const TextareaContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
