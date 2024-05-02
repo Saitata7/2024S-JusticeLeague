@@ -11,7 +11,8 @@ import {
   NavItem,
   NavLink,
   NavImg,
-  NavBtnLink
+  NavBtnLink,
+  BtnLink
 } from './NewsPostElements';
 
 const NewsPostComponent = () => {
@@ -86,7 +87,7 @@ const NewsPostComponent = () => {
               placeholder="Content"
               required
             ></Posttextarea>
-            <NavBtnLink type="submit">Post</NavBtnLink>
+            <BtnLink type="submit">Post</BtnLink>
           </form>
           </FormContainer>
         )}

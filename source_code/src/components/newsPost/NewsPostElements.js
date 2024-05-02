@@ -73,6 +73,37 @@ export const NavBtnLink = styled(LinkR)`
     }
 
 `
+export const BtnLink = styled.button`
+border-radius: 50px;
+text-decoration: none;
+background: #16c1c7;
+white-space: nowrap;
+padding: 10px 22px;
+color: #010606;
+font-size: 1rem;
+outline: none;
+border: none;
+cursor: pointer;
+transition: all 0.2s ease-in-out;
+font-weight: 900;
+display: flex;
+justify-content: center; /* Center horizontally */
+align-items: center; /* Center vertically */
+
+&:hover {
+  transition: all 0.2s ease-in-out;
+  background: #fff;
+  color: #16c1c7; }
+
+`
+export const ButContainer = styled.nav`
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+
+`
 export const NavBtn = styled.nav`
     display: flex;
     align-items: center;
