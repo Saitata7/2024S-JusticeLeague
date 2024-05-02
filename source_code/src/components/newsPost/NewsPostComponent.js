@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import logo from '../../images/logo.png';
+import {
+  FormContainer,
+  Postinput,
+  Posttextarea,
+  NavBtn,
+  Nav,
+  NavItem,
+  NavLink,
+  NavImg,
+  NavBtnLink
+} from './NewsPostElements';
 
 const NewsPostComponent = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,37 +37,60 @@ const NewsPostComponent = () => {
       try {
         const docRef = await addDoc(collection(db, 'news'), newsData);
         console.log('News posted successfully with ID:', docRef.id);
-        
+
         // Retrieve the list of users and send email notifications
         // Code for retrieving users and sending emails goes here
-        
+
         setTitle('');
         setContent('');
+        setShowForm(false); // Hide the form after successful submission
       } catch (error) {
         console.error('Error posting news:', error);
       }
     }
   };
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <div>
-      <h3>Post News</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
-          required
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Content"
-          required
-        ></textarea>
-        <button type="submit">Post</button>
-      </form>
+      <Nav>
+        <NavImg src={logo} alt="" />
+        <NavItem>
+          <NavLink to="/">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="#">Blog Page</NavLink>
+        </NavItem>
+        <NavBtn>
+        {/* New Post Logic */}
+        <NavBtnLink onClick={toggleForm}>New Post</NavBtnLink>
+        </NavBtn>
+      </Nav>
+      {showForm && (
+        <FormContainer>
+              <h3 style={{ color: 'white' }}>Upload Post</h3>
+          <form onSubmit={handleSubmit}>
+            <Postinput
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Title"
+              required
+            />
+            <Posttextarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Content"
+              required
+            ></Posttextarea>
+            <NavBtnLink type="submit">Post</NavBtnLink>
+          </form>
+          </FormContainer>
+        )}
+        
     </div>
   );
 };
