@@ -63,7 +63,7 @@ const NewsPostComponent = () => {
           <NavLink to="/">Home</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="#">Blog Page</NavLink>
+          <NavLink to="/post">Blog Page</NavLink>
         </NavItem>
         <NavBtn>
         {/* New Post Logic */}
