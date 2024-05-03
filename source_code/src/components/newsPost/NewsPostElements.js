@@ -182,3 +182,62 @@ overflow-y: auto;
 margin-top: 2px;
 height: 120px;
 `;
+
+
+// New Post Details Styling
+
+export const PostContainer = styled.div`
+  margin: 20px;
+`;
+
+export const PostTitle = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+export const PostContent = styled.p`
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+`;
+
+export const CommentsContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const CommentText = styled.p`
+  font-size: 16px;
+`;
+
+export const CommentAuthor = styled.p`
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+  margin-right: 10px;
+`;
+
+export const CommentInput = styled.textarea`
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+`;
+
+export const CommentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+export const SubmitButton = styled.button`
+  border-radius: 5px;
+  background-color: #16c1c7;
+  color: #00000;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;

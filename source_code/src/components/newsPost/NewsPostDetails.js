@@ -2,6 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFirestore, doc, getDoc, collection, query, orderBy, onSnapshot, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import logo from '../../images/logo.png';
+import {
+  PostContainer,
+  PostTitle,
+  PostContent,
+  Nav,
+  NavItem,
+  NavLink,
+  NavImg,
+  CommentsContainer,
+  CommentText,
+  CommentAuthor,
+  CommentInput,
+  CommentWrapper,
+  SubmitButton
+} from './NewsPostElements';
 
 const NewsPostDetailsComponent = () => {
   const { postId } = useParams();
@@ -60,29 +76,44 @@ const NewsPostDetailsComponent = () => {
 
   return (
     <div>
+      <Nav>
+        <NavImg src={logo} alt="" />
+        <NavItem>
+          <NavLink to="/">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/post">Blog Page</NavLink>
+        </NavItem>
+      </Nav>
+
+      {/* Comment Logic */}
+    <PostContainer>
       {post ? (
         <div>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-          <h4>Comments:</h4>
-          {comments.map((comment) => (
-            <div key={comment.id}>
-              <p>{comment.text}</p>
-              <p>By: {comment.author}</p>
-            </div>
-          ))}
+          <PostTitle>{post.title}</PostTitle>
+          <PostContent>{post.content}</PostContent>
           <div>
-            <textarea
+            <CommentInput
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               placeholder="Write a comment..."
             />
-            <button onClick={handleCommentSubmit}>Submit Comment</button>
+            <SubmitButton onClick={handleCommentSubmit}>Submit Comment</SubmitButton>
           </div>
+          <h4 style={{ marginTop: '10px' }}>Comments:</h4>
+          <CommentsContainer>
+            {comments.map((comment) => (
+              <CommentWrapper key={comment.id}>
+                <CommentAuthor>By: {comment.author}</CommentAuthor>
+                <CommentText>{comment.text}</CommentText>
+              </CommentWrapper>
+            ))}
+          </CommentsContainer>
         </div>
       ) : (
         <p>Loading...</p>
       )}
+    </PostContainer>
     </div>
   );
 };
