@@ -9,12 +9,33 @@ from nltk.stem.porter import PorterStemmer
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_cors import cross_origin
+import tensorflow as tf
+from transformers import BartTokenizer, TFBartForConditionalGeneration
+
+app = Flask(__name__)
+
 
 
 
 model = joblib.load('model.pkl')
 vectorization = joblib.load('vectorization.pkl')
 ##vectorization = TfidfVectorizer()
+
+bart_tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
+bart_model = TFBartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
+
+
+@app.route('/summarize', methods = ['POST'])
+#creating summary function
+def summarize():
+    input_text = request.json['data']
+    #input_text = clean_and_lower(input_text)
+
+    inputs = bart_tokenizer([input_text], max_length = 1024, return_tensors = 'tf', truncation = True, padding = True)
+    outputs = bart_model.generate(inputs['input_ids'])
+    generated_summary = bart_tokenizer.decode(outputs[0], skip_special_tokens = True)
+
+    return jsonify({'Summary': generated_summary})
 
 
 port_stem = PorterStemmer()
@@ -29,7 +50,7 @@ def clean_and_lower(text):
 
 
 
-app = Flask(__name__)
+
 
 
 
