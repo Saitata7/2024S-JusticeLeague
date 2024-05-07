@@ -7,9 +7,11 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+# Define the path to the CSV file containing the data
 csv_file_path = '/content/main.csv'
 df_main = pd.read_csv(csv_file_path)
 
+# Read the CSV file into a Pandas DataFrame
 port_stem = PorterStemmer()
 def clean_my_data(text):
     cleaned_text = re.sub(r'[^A-Za-z0-9]+', ' ', text)
