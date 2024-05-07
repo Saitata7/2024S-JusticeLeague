@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { getFirestore, collection, query, orderBy, onSnapshot } from 'firebase/firestore';
-import { Link } from 'react-router-dom';
 import { NewsContainer, NewsTitle, NewsGrid, NewsCard, NewsLink, NewsTitleText, NewsContent, CommentsContainer, CommentsIcon, CommentsText } from './NewsDisplayElements';
 
 const NewsDisplayComponent = () => {

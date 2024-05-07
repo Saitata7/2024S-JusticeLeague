@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import { auth } from "../firebase/config";
 import { getAuth } from "firebase/auth";
 import {
   Nav,
@@ -64,11 +63,9 @@ export const Navbar = ({ toggle }) => {
           <NavBarLink to="/history">Search History</NavBarLink>
           </NavItem>
           )}
-          {auth.currentUser && (
             <NavItem>
               <NavBarLink to="/post">Blog</NavBarLink>
             </NavItem>
-          )}
           <NavItem>
             <NavLinks to="about">About us</NavLinks>
           </NavItem>

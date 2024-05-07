@@ -19,6 +19,7 @@ const NewsPostComponent = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const auth = getAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +45,7 @@ const NewsPostComponent = () => {
 
         setTitle('');
         setContent('');
-        setShowForm(false); // Hide the form after successful submission
+        setShowForm(false); 
       } catch (error) {
         console.error('Error posting news:', error);
       }
@@ -65,10 +66,12 @@ const NewsPostComponent = () => {
         <NavItem>
           <NavLink to="/post">Blog Page</NavLink>
         </NavItem>
+        {auth.currentUser && (  
         <NavBtn>
         {/* New Post Logic */}
         <NavBtnLink onClick={toggleForm}>New Post</NavBtnLink>
         </NavBtn>
+        )}
       </Nav>
       {showForm && (
         <FormContainer>

@@ -24,6 +24,7 @@ const NewsPostDetailsComponent = () => {
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
+  const auth = getAuth();
 
   useEffect(() => {
     const db = getFirestore();
@@ -92,6 +93,7 @@ const NewsPostDetailsComponent = () => {
         <div>
           <PostTitle>{post.title}</PostTitle>
           <PostContent>{post.content}</PostContent>
+          {auth.currentUser ? (  
           <div>
             <CommentInput
               value={commentText}
@@ -100,6 +102,9 @@ const NewsPostDetailsComponent = () => {
             />
             <SubmitButton onClick={handleCommentSubmit}>Submit Comment</SubmitButton>
           </div>
+        ): (
+          <CommentText>Please log in to leave a comment.</CommentText>
+          )}
           <h4 style={{ marginTop: '10px' }}>Comments:</h4>
           <CommentsContainer>
             {comments.map((comment) => (
