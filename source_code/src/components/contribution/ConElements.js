@@ -65,7 +65,7 @@ export const ServicesIcon = styled.img`
 
 export const ServicesH1 = styled.h1`
     font-size: 2.5rem;
-    color: #fff;
+    color: #00000;
     margin-bottom: 64px;
 
     @media screen and (max-width: 480px) {
