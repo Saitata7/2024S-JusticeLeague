@@ -25,16 +25,16 @@ bart_tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
 bart_model = TFBartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
 
-@app.route('/summarize', methods = ['POST'])
-#creating summary function
+@app.route('/summarize', methods=['POST'])
+@cross_origin()
 def summarize():
     input_text = request.json['data']
-    #input_text = clean_and_lower(input_text)
+    print('Received input_text:', input_text)  
 
-    inputs = bart_tokenizer([input_text], max_length = 1024, return_tensors = 'tf', truncation = True, padding = True)
+    print('summarized called')
+    inputs = bart_tokenizer([input_text], max_length=1024, return_tensors='tf', truncation=True, padding=True)
     outputs = bart_model.generate(inputs['input_ids'])
-    generated_summary = bart_tokenizer.decode(outputs[0], skip_special_tokens = True)
-
+    generated_summary = bart_tokenizer.decode(outputs[0], skip_special_tokens=True)
     return jsonify({'Summary': generated_summary})
 
 

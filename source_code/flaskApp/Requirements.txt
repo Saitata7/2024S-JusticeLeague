@@ -1,0 +1,1 @@
+index js file is of static/index.js
