@@ -24,15 +24,18 @@ const Textarea = styled.textarea`
   overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
 `;
 
-const GrowingTextarea = () => {
+const GrowingTextarea = ({ onInputChange,onSummarize }) => {
   const [value, setValue] = useState('');
   const [response, setResponse] = useState('');
   const textareaRef = useRef(null);
 
   useEffect(() => {
     adjustHeight();
-  }, [value]);
+    onInputChange(value);
+  }, [value,onInputChange]);
+  
 
+  
   const adjustHeight = () => {
     if (textareaRef.current) {
       // Reset the height to auto to calculate the correct scrollHeight
@@ -49,6 +52,7 @@ const GrowingTextarea = () => {
 
   const sendDataToServer = async () => {
     try {
+      console.log('in method')
       const response = await axios.post('http://127.0.0.1:5000/process', { data: value });
       setResponse(response.data); 
       const db = getFirestore();
@@ -75,8 +79,11 @@ const GrowingTextarea = () => {
         <Textarea value={value} onChange={handleChange} ref={textareaRef} rows={1} />
       </TextareaContainer>
       <div style={{ marginTop: '6px' }}>
-        <ButtonBasic to="" primary="true" dark="true" className="mx-auto" onClick={sendDataToServer}>
+        <ButtonBasic to="" primary="true" dark="true" className="mx-auto" onClick={sendDataToServer} >
           Verify News
+        </ButtonBasic>
+        <ButtonBasic to="" primary="true" dark="true" onClick={onSummarize} style={{ marginLeft: '10px' }}>
+          Summarize
         </ButtonBasic>
       </div>
       {response && (
