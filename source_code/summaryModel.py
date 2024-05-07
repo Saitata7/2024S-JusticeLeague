@@ -51,3 +51,23 @@ encoder_embedding = Embedding(input_dim = 1000, output_dim = 250)(encoder_input)
 encoder_lstm = LSTM(256,return_sequences=True, return_state= True)
 encoder_output, state_h, state_c = encoder_lstm(encoder_embedding)
 encoder_states = [state_h, state_c]
+
+
+#decoder
+
+decoder_input_data = pad_sequences(y_train_sequences, maxlen = 250, padding = 'post')[:,:-1]
+decoder_target_data = pad_sequences(y_train_sequences, maxlen = 250, padding = 'post')[:,1:]
+
+decoder_input = Input(shape=(None,))
+decoder_embedding = Embedding(input_dim = 1000, output_dim = 250)(decoder_input)
+decoder_lstm = LSTM(256,return_sequences=True, return_state= True)
+decoder_output, _, _ = decoder_lstm(decoder_embedding, initial_state = encoder_states)
+attention = Attention()
+context_vector = attention([decoder_output,encoder_output])
+decoder_combined_context = tf.concat([decoder_output, context_vector], axis=-1)
+decoder_dense = Dense(250, activation = 'softmax')
+decoder_output = decoder_dense(decoder_combined_context)
+
+RNN_model = Model([encoder_input,decoder_input], decoder_output)
+RNN_model.compile(optimizer = 'adam', loss= 'sparse_categorical_crossentropy')
+RNN_model.fit([X_train_padded,decoder_input_data], decoder_target_data, batch_size=32, epochs = 10)
