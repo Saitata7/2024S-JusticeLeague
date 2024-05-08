@@ -77,7 +77,7 @@ export const InfoSection_upload = ({ id, title, subtitle, text, image, btnText }
             </div>
             <div className="col-lg-6 col-sm-12">
               {isSummarizing ? (
-                <div>Loading...</div>
+                <div style="color: white;">Loading...</div>
               ) : showImage ? (
                 <div className="img-wrap">
                   <img src={image} alt="" className="fit-img" />
