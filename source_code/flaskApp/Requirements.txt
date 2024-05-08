@@ -1,1 +1,10 @@
-index js file is of static/index.js
+Flask==2.0.3
+Flask-Cors==3.1.1
+joblib==1.4.2
+nltk==3.6.3
+scikit-learn==0.24.2
+tensorflow==2.6.0
+termcolor==1.1.0
+transformers==4.11.3
+tf_keras==2.16.0
+pandas==2.2.2
