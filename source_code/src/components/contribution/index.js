@@ -11,7 +11,7 @@ import Suraj from "../../images/team/suraj.jpg"
 
 const Contribution = () => {
   return (
-    <ServicesContainer id="services">
+    <ServicesContainer id="teamm">
       <ServicesH1>Our Team</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
@@ -78,7 +78,7 @@ const Contribution = () => {
           <ServicesIcon src={Gayatri} />
           <ServicesH2>Gayatri Kulkarni</ServicesH2>
           <ServicesP>
-          I am software engineer, I follows my passion to build learn about more technologies.
+          I am software engineer, I follows my passion to build and learn more about technologies.
           </ServicesP>
           <ServicesA href="https://www.linkedin.com/in/gayatri-kishor-kulkarni-56468a217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</ServicesA>
         </ServicesCard>
