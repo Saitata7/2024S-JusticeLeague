@@ -41,16 +41,17 @@ import Footer from "../components/footer";
         btnText="Verify News"
       /> 
 
-      <InfoSectionLight
+      {/* <InfoSectionLight
         image={Image2}
         id="discover"
         subtitle="Hello"
         title="In Progress"
         text="Our contributor Info"
         btnText="Explore"
-      />
-      <Services />
+      /> */}
+      
       <Contribution />
+      <Services />
       <InfoSectionLight
         image={Image1}
         id="contact"
