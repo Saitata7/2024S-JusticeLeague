@@ -27,8 +27,7 @@ const Contribution = () => {
           <ServicesIcon src={Rushabh} />
           <ServicesH2>Rushabh Shingala</ServicesH2>
           <ServicesP>
-          By empowering users with tools to discern truth from falsehood, 
-          we contribute to fostering a more informed society.
+          I'm a software engineer to Passionate about building web solutions with ASP.NET and MVC.
          </ServicesP>
          <ServicesA href="linkedin.com/in/rushabhshingala594551170" target="_blank">LinkedIn</ServicesA>
         </ServicesCard>
