@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { ref, onChildAdded } from 'firebase/database';
 import { database } from '../components/firebase/config';
-import UserSearch from '../components/usersearch/UserSearch';
 import { Navbar } from './../components/navbar';
 import { Sidebar } from './../components/sidebar';
 import ChatComponent from '../components/chatcomponent/ChatComponent';
+import './Chatdesign.css';
 
 const ChatPage = () => {
   const [user, setUser] = useState('');
@@ -33,7 +33,6 @@ const ChatPage = () => {
 
   useEffect(() => {
     const usersRef = ref(database, 'users');
-
     const unsubscribe = onChildAdded(usersRef, (snapshot) => {
       const userId = snapshot.key;
       const userData = snapshot.val();
@@ -56,15 +55,32 @@ const ChatPage = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <h2>Chat</h2>
+      <h2>Select a user to  a conversation.</h2>
+      <center><h2>Choose a user to start conversation.</h2></center>
       <div className="user-search">
-        <UserSearch users={users} onSelectUser={handleSelectUser} />
+        <table>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id} onClick={() => handleSelectUser(user)}>
+                <td>{user.email}</td>
+                <td><button>Select</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className="chat-container">
-        {selectedUser ? (
+        {selectedUser && (
           <ChatComponent user={user} selectedUser={selectedUser} />
-        ) : (
-          <p>Select a user to start chatting.</p>
-        )}
+        ) 
+        
+       }
       </div>
     </div>
   );
