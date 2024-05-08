@@ -69,6 +69,9 @@ export const Navbar = ({ toggle }) => {
           <NavItem>
             <NavLinks to="about">About us</NavLinks>
           </NavItem>
+          <NavItem>
+            <NavLinks to="teamm">Team</NavLinks>
+          </NavItem>
           {/* <NavItem>
             <NavLinks to="contact">Contact</NavLinks>
           </NavItem> */}
