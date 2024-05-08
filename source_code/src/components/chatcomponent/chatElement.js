@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ChatContainer = styled.div`
-    background: #0c0c0c;
+    background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,14 +19,14 @@ export const ChatMessages = styled.div`
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    color: white;
+    color: black;
 
     div {
         margin-bottom: 10px;
     }
 
     strong {
-        color: #00ff00; /* Green color for sender name */
+        color: black; /* Green color for sender name */
     }
 `;
 
