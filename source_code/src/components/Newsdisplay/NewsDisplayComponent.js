@@ -1,6 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { getFirestore, collection, query, orderBy, onSnapshot } from 'firebase/firestore';
-import { NewsContainer, NewsTitle, NewsGrid, NewsCard, NewsLink, NewsTitleText, NewsContent, CommentsContainer, CommentsIcon, CommentsText } from './NewsDisplayElements';
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  getDocs,
+} from 'firebase/firestore';
+import {
+  NewsContainer,
+  NewsTitle,
+  NewsGrid,
+  NewsCard,
+  NewsLink,
+  NewsTitleText,
+  NewsContent,
+  CommentsContainer,
+  CommentsIcon,
+  CommentsText,
+} from './NewsDisplayElements';
 
 const NewsDisplayComponent = () => {
   const [newsPosts, setNewsPosts] = useState([]);
@@ -8,12 +26,18 @@ const NewsDisplayComponent = () => {
   useEffect(() => {
     const db = getFirestore();
     const q = query(collection(db, 'news'), orderBy('timestamp', 'desc'));
-
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const posts = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+    const unsubscribe = onSnapshot(q, async (snapshot) => {
+      const posts = await Promise.all(
+        snapshot.docs.map(async (doc) => {
+          const commentsSnapshot = await getDocs(collection(db, 'news', doc.id, 'comments'));
+          const commentsCount = commentsSnapshot.size;
+          return {
+            id: doc.id,
+            ...doc.data(),
+            commentsCount,
+          };
+        })
+      );
       setNewsPosts(posts);
     });
 
@@ -32,9 +56,7 @@ const NewsDisplayComponent = () => {
             </NewsLink>
             <CommentsContainer>
               <CommentsIcon>💬</CommentsIcon>
-              <CommentsText>
-                {post.comments ? post.comments.length : 0} Comments
-              </CommentsText>
+              <CommentsText>{post.commentsCount} Comments</CommentsText>
             </CommentsContainer>
           </NewsCard>
         ))}
