@@ -3,5 +3,5 @@ source_code/flaskApp/csv/Fake.csv
 source_code/flaskApp/csv/True.csv
 node_modules
 
-env/
+source_code/flaskApp/myenv/
 package-lock.json
