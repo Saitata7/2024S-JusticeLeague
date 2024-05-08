@@ -63,9 +63,11 @@ export const Navbar = ({ toggle }) => {
           <NavBarLink to="/history">Search History</NavBarLink>
           </NavItem>
           )}
+           {auth.currentUser && (
             <NavItem>
               <NavBarLink to="/post">Blog</NavBarLink>
             </NavItem>
+          )}
           <NavItem>
             <NavLinks to="about">About us</NavLinks>
           </NavItem>
