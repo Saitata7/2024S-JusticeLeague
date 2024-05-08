@@ -82,15 +82,16 @@ def prediction(data):
     df_news['news_to_predict'] = df_news['news_to_predict'].apply(clean_and_lower)
     news_X_test = df_news['news_to_predict']
     news_X_test = vectorization.transform(news_X_test)
+    confidence = model.predict_proba(news_X_test)[0].max()* 100
     result = model.predict(news_X_test)
 
-    
 
-    if result[0] == 1:
-        
-        return "This News is Fake"
+
+
+    if result == 1:
+        return "This News is Fake", confidence
     else:
-        return "This is an Actual News"
+        return "This is an Actual News", confidence
     
 if __name__ == '__main__':
     app.run(debug=True)
